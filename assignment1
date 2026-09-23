@@ -1,0 +1,54 @@
+# Program Name: Assignment1.py
+# Course: IT3883/Section 001
+# Student Name: Samantha Varela
+# Assignment Number: Assignment 1
+# Due Date: 09/22/2026
+# Purpose: This program implements an interactive text-based menu system that allows 
+#          users to manage an input buffer. Users can append text, clear the buffer, 
+#          view current contents, or exit the program.
+# List Specific resources used to complete the assignment: Python 3 Official Documentation.
+
+def main():
+    # Initialize an empty string to act as the input buffer storage
+    input_buffer = ""
+    
+    # Run the menu loop continuously until the user chooses to exit
+    while True:
+        print("\n=== Text-Based Menu ===")
+        print("1. Append data to the input buffer")
+        print("2. Clear the input buffer")
+        print("3. Display the input buffer")
+        print("4. Exit the program")
+        
+        # Prompt the user for a menu choice and strip surrounding whitespace
+        choice = input("Please enter your choice (1-4): ").strip()
+        
+        if choice == '1':
+            # Option 1: Prompt the user for a string and append it to the existing buffer
+            new_data = input("Enter the string you would like to append: ")
+            input_buffer += new_data
+            print("Data successfully appended.")
+            
+        elif choice == '2':
+            # Option 2: Reset/clear the input buffer back to an empty string
+            input_buffer = ""
+            print("Input buffer has been cleared.")
+            
+        elif choice == '3':
+            # Option 3: Print the current contents of the input buffer to the screen
+            print("\n--- Current Input Buffer ---")
+            print(input_buffer)
+            print("-" * 28)
+            
+        elif choice == '4':
+            # Option 4: Terminate the program loop
+            print("Exiting program. Goodbye!")
+            break
+            
+        else:
+            # Handle any invalid user inputs
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+# Entry point of the script
+if __name__ == "__main__":
+    main()
