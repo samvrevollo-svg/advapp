@@ -1,8 +1,8 @@
 # Program Name: socket_client_chat.py
-# Course: IT3883/Section 002
+# Course: IT3883/Section 001
 # Student Name: Samantha Varela
 # Assignment Number: Assignment 4 (Program A)
-# Due Date: 11/15/2026
+# Due Date: 11/08/2026
 # Purpose: This program acts as the client side of a simple network communication 
 #          setup. It prompts the user to type a string, sends it over a socket to 
 #          Program B, waits for the uppercase reply, and prints it out.
