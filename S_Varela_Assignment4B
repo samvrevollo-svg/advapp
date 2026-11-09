@@ -1,0 +1,45 @@
+# Program Name: socket_server_chat.py
+# Course: IT3883/Section 001
+# Student Name: Samantha Varela
+# Assignment Number: Assignment 4 (Program B)
+# Due Date: 11/08/2026
+# Purpose: This program acts as the server side. It listens for an incoming string 
+#          from Program A, converts the received text into all uppercase letters, 
+#          and sends it right back.
+# List Specific resources used to complete the assignment:
+#          - Course lecture notes on server sockets and bindings.
+
+import socket
+
+def main():
+    # Bind to local host and the same port number used in Program A
+    host = socket.gethostname()
+    port = 48271
+    
+    server_sock = socket.socket()
+    server_sock.bind((host, port))
+    
+    # Listen for incoming connections
+    server_sock.listen(1)
+    print("Program B is listening for Program A...")
+    
+    conn, addr = server_sock.accept()
+    print("Connected with client:", addr)
+    
+    # Receive data from Program A
+    incoming_data = conn.recv(1024).decode()
+    print("Received string:", incoming_data)
+    
+    # Convert everything to uppercase
+    upper_data = incoming_data.upper()
+    
+    # Send the modified string back to Program A
+    conn.send(upper_data.encode())
+    
+    # Clean up connection
+    conn.close()
+    server_sock.close()
+    print("Connection closed. All done!")
+
+if __name__ == "__main__":
+    main()
