@@ -1,0 +1,40 @@
+# Program Name: socket_client_chat.py
+# Course: IT3883/Section 002
+# Student Name: Samantha Varela
+# Assignment Number: Assignment 4 (Program A)
+# Due Date: 11/15/2026
+# Purpose: This program acts as the client side of a simple network communication 
+#          setup. It prompts the user to type a string, sends it over a socket to 
+#          Program B, waits for the uppercase reply, and prints it out.
+# List Specific resources used to complete the assignment:
+#          - Course lecture notes on Python socket programming.
+
+import socket
+
+def main():
+    # Setting up local host and a custom port above 40000 as suggested in class
+    host = socket.gethostname()
+    port = 48271
+    
+    # Create the client socket object
+    my_sock = socket.socket()
+    
+    print(f"Connecting to server on port {port}...")
+    my_sock.connect((host, port))
+    
+    # Get a message from the user
+    user_msg = input("Type a message to send over: ")
+    
+    # Send the encoded string to Program B
+    my_sock.send(user_msg.encode())
+    
+    # Wait to receive the uppercase response back
+    response = my_sock.recv(1024).decode()
+    
+    print("Got this back from Program B:", response)
+    
+    # Always close the socket when done
+    my_sock.close()
+
+if __name__ == "__main__":
+    main()
